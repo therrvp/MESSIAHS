@@ -1,0 +1,95 @@
+body{
+  background-color:white;
+}
+
+.form-control{
+  width:50%;
+  font-size: 50px;
+  left: 15%;
+}
+#map{
+        border-radius: 20px;
+				width: 68%;
+				height: 40%;
+        position: fixed;
+        left: 15%;
+
+			}
+
+
+.bar{
+  font-family: 'Roboto Mono', monospace;
+  color: black;
+  font-size:45px;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  position: fixed;
+  height:62px;
+   width: 100%;
+   background-color:#e8e6df;
+   top:0%;
+  z-index: 3;
+}
+
+  .box,.box1{
+     color: white;
+      text-align:center;
+      margin-top: 20%;
+      background:none;
+      display:flex;
+      flex-wrap: wrap;
+      position:relative;
+      height: 99%;
+      top:10%;
+
+      z-index:3;
+
+
+      width:100%;
+
+
+  }
+
+  .intro{
+     color: white;
+      text-align:center;
+      display:flex;
+      flex-wrap: wrap;
+      position:fixed;
+      height: 40%;
+      z-index:1;
+      width:100%;
+}
+  .box>div{
+    background-color:black;
+    margin-top:1%;
+    margin-bottom:1%;
+    margin-left: 25%;
+    margin-right: 25%;
+  font-family: 'Roboto Mono', monospace;
+    text-align:left;
+    overflow: auto;
+    font-size:20px;
+    width: 60%;
+    left: 40%;
+    padding: 2%;
+    height:auto;
+    top:20%;
+    bottom:50%;
+  }
+
+  
+  .intro>div
+  {
+    background:url("https://cdn.technologynetworks.com/tn/images/thumbs/jpeg/640_360/useful-chemical-made-from-air-pollutant-gas-327554.jpg");
+    background-size:cover;
+    margin-top:2%;
+    text-align:center;
+    overflow:scroll;
+    font-size:30px;
+    width: 100%;
+    padding: 2%;
+    height:780px;
+    top:20%;
+    overflow: hidden;
+  }

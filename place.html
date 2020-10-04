@@ -1,0 +1,117 @@
+ ,<!DOCTYPE html>
+   <html>
+  <head>
+    <title>nasa</title>
+
+    	<link href='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet' />
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
+     <link rel="stylesheet" type="text/css" href="main.css">
+
+       <script src='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js'>
+       </script>
+ 		<link href='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet' />
+
+
+
+
+  <style>
+
+    .box2{
+        color: white;
+        text-align:center;
+        background:none;
+        display:flex;
+        flex-wrap: wrap;
+        position:relative;
+        top:10%;
+        z-index:3;
+        width:100%;
+}
+    .box2>div{
+      background-color:red;
+      margin-top:1%;
+      margin-bottom:1%;
+      margin-left: 55%;
+
+    font-family: 'Roboto Mono', monospace;
+      text-align:left;
+
+      font-size:20px;
+      width: 50%;
+      right:10%;
+      padding: 2%;
+      height:20%;
+      top:20%;
+
+    }
+  </style>
+
+  </head>
+ <body>
+ <div class="intro">
+  <div>
+    <div id="search" >
+      <div>
+        <input  type="text" class="form-control" name="address" id="address" aria-describedby="emailHelpId" value="" placeholder="eg : Salem,TamilNadu,India" >
+          <button  class="btn btn-danger" onclick="process(document.getElementById('address').value);" >Can I go ?</button>
+          <br>
+          <br>
+      </div>
+    </div>
+  <section id='map'></section>
+</div>
+</div>
+<div class="box2">
+  <div>You are advised not to go to {{place}} </div>
+            <script>
+              function plot(long = 80.2785, lat = 13.0878) {
+                mapboxgl.accessToken =
+                  'pk.eyJ1IjoidmlydWNoaXRoIiwiYSI6ImNrZXIzN2RjczE3Z2kycWxnMnc5c2dwNTEifQ.mTRkb96yEWaK5YWz4KOvZQ';
+                var map = new mapboxgl.Map({
+                  container: 'map',
+                  center: [long, lat],
+                  zoom: 10,
+                  style: 'mapbox://styles/mapbox/streets-v11'
+                });
+              }
+              plot(80.2785, 13.0878)
+            </script>
+
+            <script>
+              function process(address) {
+              var address = document.getElementById("address").value ;
+              url ="https://api.opencagedata.com/geocode/v1/json?q="+encodeURI(address)+"&key=da43b47bc9f0486c9e869505c49e9ed8";
+
+              var xhttp = new XMLHttpRequest();
+              xhttp.onreadystatechange = function() {
+              if (this.readyState == 4 && this.status == 200) {
+              var response = JSON.parse(this.responseText);
+              var lat = (response.results[0].geometry.lat).toFixed(4);
+              var long = (response.results[0].geometry.lng).toFixed(4);
+              console.log("lat : "+lat);
+              console.log("long : "+long);
+
+              plot(long,lat);
+
+              }
+              };
+              xhttp.open("GET", url, true);
+              xhttp.send();
+
+              }
+            </script>
+
+
+
+              </div>
+
+
+
+
+
+  <div class="bar" style="text-align: center;">#GOANYWHERE
+</div>
+</body>
+
+</html>
